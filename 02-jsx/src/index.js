@@ -4,12 +4,16 @@ import ReactDOM from 'react-dom';
 function HelloWorld() {
   const name = 'Dave';
 
-  return (
-    <div>
-      <h1>This is a Hello</h1>
-      hello <strong>{name}</strong>
-    </div>
+  return React.createElement(
+    'div',
+    {},
+    React.createElement('h1', {}, 'This is a Hello'),
+    'hello ',
+    React.createElement('strong', {}, name)
   );
 }
 
-ReactDOM.render(<HelloWorld />, document.querySelector('#root'));
+ReactDOM.render(
+  React.createElement(HelloWorld),
+  document.querySelector('#root')
+);
