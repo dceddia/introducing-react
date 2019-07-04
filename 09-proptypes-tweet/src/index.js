@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import './index.css';
 
@@ -21,6 +22,9 @@ function Tweet({ tweet }) {
     </div>
   );
 }
+Tweet.propTypes = {
+  tweet: PropTypes.object.isRequired
+};
 
 function Avatar({ hash }) {
   var url = `https://www.gravatar.com/avatar/${hash}`;
@@ -28,10 +32,16 @@ function Avatar({ hash }) {
     <img src={url} className="avatar" alt="avatar" />
   );
 }
+Avatar.propTypes = {
+  hash: PropTypes.string.isRequired
+};
 
 function Message({ text }) {
   return <div className="message">{text}</div>;
 }
+Message.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 function Author({ author }) {
   const { name, handle } = author;
@@ -42,10 +52,19 @@ function Author({ author }) {
     </span>
   );
 }
+Author.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    handle: PropTypes.string.isRequired
+  }).isRequired
+};
 
 const Time = ({ time }) => {
   const timeString = moment(time).fromNow();
   return <span className="time">{timeString}</span>;
+};
+Time.propTypes = {
+  time: PropTypes.string.isRequired
 };
 
 const ReplyButton = () => (
@@ -69,6 +88,10 @@ const RetweetButton = ({ count }) => (
   </span>
 );
 
+RetweetButton.propTypes = {
+  count: PropTypes.number
+};
+
 const LikeButton = ({ count }) => (
   <span className="like-button">
     <i className="fa fa-heart" />
@@ -77,6 +100,9 @@ const LikeButton = ({ count }) => (
     )}
   </span>
 );
+LikeButton.propTypes = {
+  count: PropTypes.number
+};
 
 const MoreOptionsButton = () => (
   <i className="fa fa-ellipsis-h more-options-button" />
@@ -91,7 +117,7 @@ var testTweet = {
   },
   likes: 2,
   retweets: 17,
-  timestamp: '2019-07-01 21:24:37'
+  timestamp: '2016-07-30 21:24:37'
 };
 
 ReactDOM.render(
