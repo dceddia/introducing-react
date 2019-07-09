@@ -7,14 +7,22 @@ function HelloWorld() {
 
   return (
     <div className="dark">
-      <h1 onClick={() => console.log('clicked')}>This is a Hello</h1>
-      <label htmlFor="myinput">Type something:</label>
-      <input id="myinput" />
-      hello <strong>{name}</strong>
+      <h1 onDoubleClick={() => console.log('hello')}>
+        This is a Hello
+      </h1>
+      <label htmlFor="email">Email</label>
+      <input id="email" />
       <div />
-      {/* this is a comment! don't use the // double-slash style */}
+      {/* this works */}
+      {
+        // works
+      }
+      hello <strong>{name}</strong>
     </div>
   );
 }
 
-ReactDOM.render(<HelloWorld />, document.querySelector('#root'));
+ReactDOM.render(
+  <HelloWorld />,
+  document.querySelector('#root')
+);
